@@ -2157,6 +2157,11 @@ class Solutions(Base.Base):
                 'arcpy.ddd.ColorizeLas',
                 index
             )
+        elif com == "GRFRF":
+            self.m_log.Message("\t{}:{}".format(self.commands[com]["desc"], self.m_base.m_mdName), self.m_log.const_general_text)
+            return self.__invokeDynamicFn(
+                [], "generaterasterfromrasterfunction", "arcpy.management.GenerateRasterFromRasterFunction", index
+            )
         elif com == "TF":
             try:
                 self.m_log.Message("\t{}:{}".format(self.commands[com]["desc"], self.m_base.m_mdName), self.m_log.const_general_text)
@@ -2591,6 +2596,7 @@ class Solutions(Base.Base):
             {'desc': 'Update Oriented Imagery Dataset Properties',
              'fnc': executeCommand
              },
+            "GRFRF": {"desc": "Generate Raster From Raster Function", "fnc": executeCommand},
             'CCSCF':
             {'desc': 'Create Cloud Storage Connection File',
              'fnc': executeCommand
